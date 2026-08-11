@@ -7,7 +7,6 @@ Transform your research speed with **Research Wheel** an 8-action, single-ring r
 ### 🚀 Direct Store Downloads
 
 * 🦊 **[Download on Firefox Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)** *(Recommended for Firefox)*
-* 🌐 **[Download on Chrome Web Store](https://chrome.google.com/webstore)** *(Pending review)*
 * 🎮 **[Get it on itch.io](https://frog1230.itch.io/researchwheel)**
 
 ---
