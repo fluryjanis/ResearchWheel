@@ -1,96 +1,300 @@
 # 🧪 Research Wheel
 
-## What It Is
+**Research the web without constantly switching tabs.**
 
-Transform your research speed with **Research Wheel** an 8-action, single-ring radial gesture menu and workspace sidebar extension works on Google and is tailored natively for Mozilla Firefox under the WebExtensions Manifest V3 architecture. Created to eliminate browsing friction, it assists researchers, students, and writers with rapid content clipping, citation generation, translation, and academic searches directly from any webpage.
+Research Wheel puts research tools directly alongside the information you're reading. Save quotes, search research sources, generate citations, and organize your findings with a simple middle-click workflow.
 
-### 🚀 Direct Store Downloads
+### 🚀 Install
 
-* 🦊 **[Download on Firefox Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)** *(Recommended for Firefox)*
-* 🎮 **[Get it on itch.io](https://frog1230.itch.io/researchwheel)**
+* 🦊 **[Add Research Wheel to Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)** — Recommended
+* 🎮 **[Get Research Wheel on itch.io](https://frog1230.itch.io/researchwheel)**
 
 ---
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/d5864076-cfa8-4204-9285-41cfdafa54f1" width="28%" alt="ResearchWheel Actions" />
-  <img src="https://github.com/user-attachments/assets/917ae478-0fcb-4c8f-8e5d-6d56e0cdd9c8" width="28%" alt="ResearchWheel Format" />
-  <img src="https://github.com/user-attachments/assets/4233ca45-8d4f-414c-87dd-3bd722f1e80d" width="38%" alt="ResearchWheel Workspace" />
+  <img src="https://github.com/user-attachments/assets/d5864076-cfa8-4204-9285-41cfdafa54f1" width="28%" alt="Research Wheel middle-click research menu" />
+  <img src="https://github.com/user-attachments/assets/917ae478-0fcb-4c8f-8e5d-6d56e0cdd9c8" width="28%" alt="Research Wheel citation formatting" />
+  <img src="https://github.com/user-attachments/assets/4233ca45-8d4f-414c-87dd-3bd722f1e80d" width="38%" alt="Research Wheel research workspace sidebar" />
 </p>
 
 ---
 
-## Key Features & Gestures
+## 🔬 What Is Research Wheel?
 
-### Features
+Research Wheel is a Firefox browser extension designed to make web research faster and easier.
 
-* **8-Octant Radial Wheel:** Drag-to-select radial menu triggered via middle-click. It provides immediate access to search actions, note clipping, and citation generation.
-* **Unified Workspace Sidebar:** A native Firefox sidebar that displays your saved notes, clipped quotes, and generated citations.
-* **Advanced Citation Engine:** Generates citations on-the-fly for APA 7th, MLA 9th, Chicago 17th, and BibTeX.
-* **Proper Noun Engine:** Applies sentence-casing rules to article titles while preserving proper nouns (e.g., U.S. states, political entities, names) and dynamically stripping possessives with straight, curly, or backtick apostrophes.
-* **Tagline and Brand Stripper:** Strips generic site tags (such as `: NPR` or `- NBC News`) from scraped webpage headers.
-* **Dual-Mode Homepage Detector:** Identifies root or localized homepages to cleanly override taglines with organizational group publishers.
+Instead of constantly switching between webpages, search engines, note-taking apps, and citation tools, Research Wheel keeps common research actions close to the information you're working with.
 
-### Radial Wheel Gesture Mappings
+**Find something → middle-click → research, save, or cite it.**
 
-* **🎓 Scholar Search (NORTH):** Launches a Google Scholar search using your highlighted text (or webpage title if no text is selected).
-* **🧬 PubMed (NORTH-EAST):** Launches a PubMed search using your highlight or title.
-* **📝 Append Note (EAST):** Clips selected text directly to your Workspace sidebar as a general research note.
-* **📜 Citation (SOUTH-EAST):** Formats, saves, and copies a citation of the page using your active style preference (APA, MLA, Chicago, or BibTeX).
-* **📂 Workspace (SOUTH):** Commands the background script to open the sidebar. If Gecko blocking policies restrict programmatic opening, a page-level toast prompts you to use the shortcut.
-* **🌐 Translate (SOUTH-WEST):** Translates the leading text containers on the webpage in-place using translation engines.
-* **🔗 Title + URL (WEST):** Copies a clean markdown hyperlink `[Page Title](URL)` directly to your clipboard.
-* **📋 Quote + Source (NORTH-WEST):** Copies and saves highlighted text as a blockquote along with its markdown-formatted source attribution.
+It's useful for:
+
+* Students
+* Researchers
+* Writers
+* Developers
+* Journalists
+* Anyone who regularly collects information from the web
 
 ---
 
-## Why Research Wheel?
+## ⚡ How It Works
 
-* **Preserves Native Autoscroll:** Quick middle-clicks are handled smoothly without interfering with native browser scrolling behaviors.
-* **Autoscroll & Deselection Mitigation:** Synchronously captures text highlights on `mousedown` before Firefox can natively clear selection buffers or trigger autoscroll behavior.
-* **Scroll & Key Blocking:** Temporarily suspends scroll events, touch moves, and keyboard navigation keys (`Space`, `Arrows`, `PageUp`/`PageDown`) when the radial wheel is active to prevent shifts in webpage positioning.
-* **100% Private:** Operates entirely locally on your device with zero data collection, analytics, or external tracking.
+### 1. Find something useful
 
----
+Browse the web normally and find information worth researching, saving, or citing.
 
-### Chrome / Unpacked Installation:
-1. Download the extension ZIP file and extract it to a folder.
-2. Open Chrome and navigate to `chrome://extensions/`.
-3. Toggle **Developer mode** to **ON** in the top right corner.
-4. Click **Load unpacked** in the top left and select your extracted folder.
+### 2. Middle-click
 
----
+Select text and middle-click to open the Research Wheel directly where you're working.
 
-## GitHub & Portfolio
+### 3. Take action
 
-* **Source Code:** [fluryjanis/ResearchWheel](https://github.com/fluryjanis/ResearchWheel)
-* **Developer Portfolio:** [Frog1230 Portfolio](https://fluryjanis.github.io/frog1230.github.io/)
-* **Other Projects:** [MindShield](https://frog1230.itch.io/mind-shield) | [Content Chef](https://frog1230.itch.io/content-chef) | [Remind Me](https://frog1230.itch.io/remind-me)
+Search research sources, save notes and quotes, generate citations, translate text, or copy useful source information.
 
 ---
 
-## 📜 Changelog
+## 🛠️ Features
 
-### Version 2.0.0 (The Research Edition Pivot)
-* **Rebranded to Research Wheel:** Pivoted project from QuickWheel to Research Wheel, focusing entirely on academic research, citation generation, and note clipping.
-* **8-Octant Radial Wheel:** Replaced generic tab navigation gestures with 8 dedicated research actions (Google Scholar, PubMed, Append Note, Citation Generator, Workspace Panel, Translate, Title + URL, Quote + Source).
-* **Native Workspace Side Panel:** Introduced a persistent sidebar UI to capture, review, organize, and manage saved quotes, notes, and citations.
-* **Advanced Citation Engine:** Added on-the-fly citation generation supporting **APA 7th**, **MLA 9th**, **Chicago 17th**, and **BibTeX** formats.
-* **Proper Noun Engine:** Built-in heuristics for intelligent title sentence-casing while preserving proper nouns, acronyms, and locations.
-* **Metadata & Scraper Guards:** Integrated automated cleaning to strip site taglines, filter out invalid author strings, and clean source metadata before serialization.
-* **Markdown Export:** Added one-click export of all collected research workspace notes to local `.md` files.
-* **Interaction Hardening:** Implemented synchronous `mousedown` selection capture and temporary input/scroll locks while the radial wheel is active to prevent page shifts and text deselection.
+### 🔎 Search Research Sources
+
+Search **Google Scholar** or **PubMed** using selected text or the current webpage title without manually opening another tab.
+
+### 📝 Save Research as You Browse
+
+Save highlighted text directly to the Research Wheel workspace.
+
+Collect:
+
+* Quotes
+* Notes
+* Code
+* URLs
+* Source information
+
+Keep useful information together instead of losing it across dozens of browser tabs.
+
+### 📚 Generate Citations
+
+Generate and copy citations in:
+
+* **APA 7th**
+* **MLA 9th**
+* **Chicago 17th**
+* **BibTeX**
+
+Research Wheel also cleans webpage metadata to produce more useful citation information from messy webpages.
+
+### 📂 Research Workspace
+
+Use the Firefox sidebar as a persistent workspace for your collected research.
+
+Review and manage saved notes, quotes, citations, and sources while continuing to browse.
+
+### 🌐 Translate Webpage Text
+
+Translate webpage content directly from the Research Wheel menu using available translation services.
+
+### 🔗 Copy Sources Easily
+
+Copy a clean Markdown link containing the page title and URL.
+
+### 📋 Quote + Source
+
+Copy selected text together with its source attribution as a Markdown blockquote.
 
 ---
 
-### Version 1.0.0 (Initial Release - QuickWheel)
-* Dual-ring radial gesture wheel triggered via middle mouse hold (>150ms).
-* Integrated 8 directional shortcuts (Tab duplicate/reopen, search focus, markdown clip, translate, scroll-to-top, tab mute, copy link).
-* Shadow DOM isolation for consistent rendering across complex sites.
-* Built-in native autoscroll fallback mechanism.
+## 🧭 Radial Wheel Actions
+
+Research Wheel provides eight research actions through its middle-click radial menu.
+
+| Direction     | Action             | What it does                               |
+| ------------- | ------------------ | ------------------------------------------ |
+| 🎓 North      | **Google Scholar** | Search selected text or the webpage title  |
+| 🧬 North-East | **PubMed**         | Search selected text or the webpage title  |
+| 📝 East       | **Append Note**    | Save selected text to the workspace        |
+| 📚 South-East | **Citation**       | Generate and copy a citation               |
+| 📂 South      | **Workspace**      | Open the research sidebar                  |
+| 🌐 South-West | **Translate**      | Translate webpage content                  |
+| 🔗 West       | **Title + URL**    | Copy a clean Markdown link                 |
+| 📋 North-West | **Quote + Source** | Copy selected text with source attribution |
 
 ---
 
-##  Privacy Policy & Disclaimer
+## 🔒 Privacy First
 
-* **Privacy First:** QuickWheel operates entirely on your local device. This extension does not transmit, collect, store, or sell any of your personal data or browsing activity.
-* **Disclaimer:** Provided "as is" without warranty of any kind. The developer is not liable for any issues that might be caused.
+Research Wheel is designed as a **local-first browser extension**.
+
+The extension operates locally on your device and does not use external servers for its core workspace functionality.
+
+**No tracking. No analytics. No collection of your browsing activity.**
+
+The project is also open source, allowing you to inspect how the extension works yourself.
+
+> **Your research should belong to you.**
+
+---
+
+## 🧠 Built for Real Web Research
+
+Webpages aren't always clean.
+
+Article titles can contain:
+
+* Site names
+* Taglines
+* Publisher branding
+* Inconsistent capitalization
+* Unusual apostrophes
+* Incorrect metadata
+* Messy author information
+
+Research Wheel includes several systems designed to clean and normalize this information before it reaches your research workspace or citation output.
+
+### Proper Noun Handling
+
+Preserves important names, organizations, locations, acronyms, and other proper nouns while formatting article titles.
+
+### Site Tagline Removal
+
+Removes common publisher suffixes and branding from scraped webpage titles.
+
+### Homepage Detection
+
+Detects root and localized homepages to improve source metadata and publisher identification.
+
+These systems exist for one reason:
+
+**Cleaner research results and more useful citations.**
+
+---
+
+## ⚙️ Technical Details
+
+Research Wheel is built for Mozilla Firefox using the **WebExtensions API** and **Manifest V3**.
+
+The extension includes several systems designed specifically around Firefox's interaction behavior.
+
+### Native Autoscroll Preservation
+
+Middle-click interactions are handled without unnecessarily interfering with Firefox's native autoscroll behavior.
+
+### Selection Capture
+
+Research Wheel captures text selection during mouse interaction so that selected text remains available when the radial menu opens.
+
+### Interaction Locking
+
+While the radial wheel is active, relevant scrolling and keyboard interactions are temporarily controlled to prevent accidental page movement.
+
+### Shadow DOM Isolation
+
+The radial interface uses isolation techniques to reduce conflicts with webpage styles.
+
+---
+
+## 📥 Installation
+
+### Firefox
+
+The recommended installation method is the official Firefox Add-ons store:
+
+**[Add Research Wheel to Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)**
+
+### Chrome / Chromium — Developer Installation
+
+Chrome/Chromium installation is intended for development or manual testing.
+
+1. Download or clone this repository.
+2. Open `chrome://extensions/`.
+3. Enable **Developer mode**.
+4. Select **Load unpacked**.
+5. Select the extension directory.
+
+---
+
+## 💻 Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/fluryjanis/ResearchWheel.git
+```
+
+Then load the project as an unpacked browser extension.
+
+The project is primarily designed around Firefox and its WebExtensions environment.
+
+---
+
+## 📦 Export Your Research
+
+Research Wheel supports exporting collected workspace research to local Markdown files.
+
+This keeps your research portable and avoids locking your notes into a proprietary cloud service.
+
+---
+
+## 🗺️ Project History
+
+Research Wheel began as **QuickWheel**, a general-purpose radial browser interaction tool.
+
+Version 2 pivoted the project toward web research, replacing generic browser shortcuts with research-focused actions.
+
+### Version 2.0.0 — The Research Edition
+
+* Rebranded QuickWheel as **Research Wheel**
+* Added research-focused radial actions
+* Added Google Scholar search
+* Added PubMed search
+* Added citation generation
+* Added APA, MLA, Chicago, and BibTeX support
+* Added persistent research workspace sidebar
+* Added quote and note clipping
+* Added Markdown export
+* Added metadata cleaning and citation safeguards
+* Added improved text-selection handling
+* Added interaction protection against accidental scrolling and page movement
+
+### Version 1.0.0 — QuickWheel
+
+The original QuickWheel release provided a general-purpose radial browser menu with actions including:
+
+* Tab duplication and reopening
+* Search focus
+* Markdown clipping
+* Translation
+* Scroll-to-top
+* Tab muting
+* Link copying
+
+---
+
+## 🔗 Links
+
+* 🦊 **[Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)**
+* 💻 **[Source Code](https://github.com/fluryjanis/ResearchWheel)**
+* 🌐 **[Research Wheel Website](https://fluryjanis.github.io/ResearchWheel/)**
+* 🎮 **[Research Wheel on itch.io](https://frog1230.itch.io/researchwheel)**
+* 👤 **[Frog1230 Portfolio](https://fluryjanis.github.io/frog1230.github.io/)**
+
+### Other Projects
+
+* [MindShield](https://frog1230.itch.io/mind-shield)
+* [Content Chef](https://frog1230.itch.io/content-chef)
+* [Remind Me](https://frog1230.itch.io/remind-me)
+
+---
+
+## 📜 Privacy & Disclaimer
+
+### Privacy
+
+Research Wheel is designed to operate locally and does not intentionally collect, sell, or transmit personal browsing data or analytics.
+
+For the most accurate information about permissions and data handling, inspect the extension source code and Firefox Add-ons listing.
+
+### Disclaimer
+
+Research Wheel is provided **"as is"** without warranty of any kind. The developer is not responsible for issues or damages resulting from use of the software.
