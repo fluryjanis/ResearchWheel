@@ -4,11 +4,32 @@
 
 Research Wheel puts research tools directly alongside the information you're reading. Save quotes, search research sources, generate citations, and organize your findings with a simple middle-click workflow.
 
-### 🚀 Install
+## 📥 Installation
 
-* 🦊 **[Add Research Wheel to Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)** — Recommended
-* 🎮 **[Get Research Wheel on itch.io](https://frog1230.itch.io/researchwheel)**
+### 🦊 Firefox
 
+The recommended installation method is Firefox Add-ons.
+
+**[Install Research Wheel for Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)**
+
+### 🌐 Chrome / Chromium
+
+Chrome and Chromium-based browsers can install Research Wheel manually using the v2.0.0 release package.
+
+**[⬇️ Download Research Wheel v2.0.0 for Chrome / Chromium](https://github.com/fluryjanis/ResearchWheel/releases/tag/v2.0.0)**
+
+#### Install
+
+1. Download the Chrome/Chromium ZIP from the **v2.0.0 release**.
+2. Extract the ZIP to a folder on your computer.
+3. Open `chrome://extensions/`.
+4. Enable **Developer mode**.
+5. Click **Load unpacked**.
+6. Select the extracted Research Wheel folder.
+
+Research Wheel can then be used directly in your browser.
+
+> **Note:** Chrome/Chromium installation is currently a manual developer-mode installation rather than a Chrome Web Store installation.
 ---
 
 <p align="center">
@@ -191,26 +212,6 @@ While the radial wheel is active, relevant scrolling and keyboard interactions a
 ### Shadow DOM Isolation
 
 The radial interface uses isolation techniques to reduce conflicts with webpage styles.
-
----
-
-## 📥 Installation
-
-### Firefox
-
-The recommended installation method is the official Firefox Add-ons store:
-
-**[Add Research Wheel to Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)**
-
-### Chrome / Chromium — Developer Installation
-
-Chrome/Chromium installation is intended for development or manual testing.
-
-1. Download or clone this repository.
-2. Open `chrome://extensions/`.
-3. Enable **Developer mode**.
-4. Select **Load unpacked**.
-5. Select the extension directory.
 
 ---
 
