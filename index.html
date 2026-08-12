@@ -121,20 +121,25 @@
       margin: 2rem 0 5rem;
     }
 
-    .media-preview {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 0.5rem;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-    }
+.media-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
 
-    .media-preview img {
-      display: block;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
+.media-preview img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 600px;
+  border-radius: 10px;
+}
 
     /* Sections */
 
@@ -350,15 +355,15 @@
     </header>
 
 
-    <!-- PRODUCT PREVIEW -->
-    <div class="container preview">
-      <div class="media-preview">
-        <img
-          src="ResearchWheel - workspace.gif"
-          alt="Research Wheel research workspace showing saved research and tools"
-        >
-      </div>
-    </div>
+<!-- PRODUCT PREVIEW -->
+<div class="container preview">
+  <div class="media-preview">
+    <img
+      src="ResearchWheel - workspace.gif"
+      alt="Research Wheel research workspace showing saved research and tools"
+    >
+  </div>
+</div>
 
 
     <!-- HOW IT WORKS -->
