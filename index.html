@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Wheel — Local-First Browser Extension</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #f8fafc;
+      --accent: #38bdf8;
+      --muted: #94a3b8;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 720px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    p.tagline { font-size: 1.25rem; color: var(--muted); margin-bottom: 2rem; }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #000; }
+    .btn-secondary { background: var(--card); color: var(--text); border: 1px solid var(--muted); }
+    .btn:hover { opacity: 0.9; }
+    .demo-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid #334155;
+      text-align: left;
+    }
+    ul { color: var(--muted); line-height: 1.6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Research Wheel</h1>
+    <p class="tagline">360° Radial Menu & Workspace Sidebar for Fast Web Research</p>
+    
+    <div class="btn-group">
+      <a href="https://addons.mozilla.org/en-US/firefox/addon/researchwheel/" class="btn btn-primary">Add to Firefox</a>
+      <a href="https://github.com/fluryjanis/ResearchWheel" class="btn btn-secondary">View on GitHub</a>
+    </div>
+
+    <div class="demo-box">
+      <h3>Key Features</h3>
+      <ul>
+        <li><strong>Radial Gesture Menu:</strong> Middle-click anywhere to capture text, search, or run tools instantly.</li>
+        <li><strong>Sidebar Workspace:</strong> Clip code, quotes, and URLs directly into a persistent side panel.</li>
+        <li><strong>Automatic Citations:</strong> Format citations instantly in APA, MLA, Chicago, and BibTeX.</li>
+        <li><strong>100% Local &amp; Private:</strong> Runs entirely offline with zero tracking or external servers.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
