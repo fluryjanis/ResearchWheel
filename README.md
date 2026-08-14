@@ -278,7 +278,7 @@ The original QuickWheel release provided a general-purpose radial browser menu w
 * 💻 **[Source Code](https://github.com/fluryjanis/ResearchWheel)**
 * 🌐 **[Research Wheel Website](https://fluryjanis.github.io/ResearchWheel/)**
 * 🎮 **[Research Wheel on itch.io](https://frog1230.itch.io/researchwheel)**
-* 👤 **[Frog1230 Portfolio](https://fluryjanis.github.io/frog1230.github.io/)**
+* 👤 **[Frog1230 Portfolio](https://fluryjanis.github.io/frog1230.github.io/)** or **[Repo](https://github.com/fluryjanis/frog1230.github.io)**
 
 ### Other Projects
 
