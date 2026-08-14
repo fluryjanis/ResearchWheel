@@ -285,6 +285,7 @@ The original QuickWheel release provided a general-purpose radial browser menu w
 * [MindShield](https://frog1230.itch.io/mind-shield)
 * [Content Chef](https://frog1230.itch.io/content-chef)
 * [Remind Me](https://frog1230.itch.io/remind-me)
+* [Your Pomodoro](https://frog1230.itch.io/your-pomodoro)
 
 ---
 
