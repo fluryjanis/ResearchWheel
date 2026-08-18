@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +10,7 @@
   >
 
   <title>Research Wheel — Research & Citation Browser Extension</title>
+
   <meta
     name="description"
     content="Research the web without constantly switching tabs. Save quotes, search research sources, generate citations, and organize your findings with Research Wheel."
@@ -116,29 +119,43 @@
       font-size: 0.9rem;
     }
 
+    .hero-links {
+      margin-top: 1.25rem;
+    }
+
+    .hero-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero-links a:hover {
+      text-decoration: underline;
+    }
+
     /* Product preview */
 
-  .preview {
-    margin: 2rem 0 4rem;
-    width: 100%;
-  }
+    .preview {
+      margin: 2rem 0 4rem;
+      width: 100%;
+    }
 
-.media-preview {
-  display: block;
-  width: 100%;
-  background: var(--card);
-  border: 1px solid #334155;
-  border-radius: 12px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
+    .media-preview {
+      display: block;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
 
-.media-preview img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
+    .media-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
 
     /* Sections */
 
@@ -249,6 +266,48 @@
       font-weight: 600;
     }
 
+    /* Blog */
+
+    .blog-posts {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .blog-post {
+      display: block;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition:
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .blog-post h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .blog-post p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .blog-post .read-more {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
     /* Final CTA */
 
     .final-cta {
@@ -284,6 +343,7 @@
     /* Mobile */
 
     @media (max-width: 650px) {
+
       .hero {
         padding-top: 3.5rem;
       }
@@ -303,6 +363,7 @@
       .privacy {
         padding: 1.5rem;
       }
+
     }
   </style>
 </head>
@@ -312,7 +373,9 @@
   <main>
 
     <!-- HERO -->
+
     <header class="hero">
+
       <div class="container">
 
         <h1>Research Wheel</h1>
@@ -337,14 +400,14 @@
             Firefox
           </a>
 
-            <a
-    href="https://github.com/fluryjanis/ResearchWheel/releases/tag/v2.0.0"
-    class="btn btn-secondary"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-      Chrome
-  </a>
+          <a
+            href="https://github.com/fluryjanis/ResearchWheel/releases/tag/v2.0.0"
+            class="btn btn-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chrome
+          </a>
 
           <a
             href="https://github.com/fluryjanis/ResearchWheel"
@@ -361,119 +424,176 @@
           Free · Open source · Local-first · No tracking
         </p>
 
-            <!-- PRODUCT PREVIEW -->
-      <div class="media-preview">
-        <img
-          src="ResearchWheel - workspace.gif"
-          alt="Research Wheel research workspace showing saved research and tools"
-        >
+        <div class="hero-links">
+          <a href="#blog">
+            Read the Research Wheel blog →
+          </a>
+        </div>
+
+        <!-- PRODUCT PREVIEW -->
+
+        <div class="media-preview">
+
+          <img
+            src="ResearchWheel - workspace.gif"
+            alt="Research Wheel research workspace showing saved research and tools"
+          >
+
+        </div>
+
       </div>
-        
-      </div>
+
     </header>
 
 
     <!-- HOW IT WORKS -->
+
     <section>
+
       <div class="container">
 
         <div class="section-heading">
+
           <h2>How it works</h2>
-          <p>Research without breaking your workflow.</p>
+
+          <p>
+            Research without breaking your workflow.
+          </p>
+
         </div>
 
         <div class="steps">
 
           <div class="step">
+
             <div class="step-number">1</div>
+
             <h3>Find something useful</h3>
+
             <p>
               Browse the web normally and find information worth saving,
               searching, or citing.
             </p>
+
           </div>
 
           <div class="step">
+
             <div class="step-number">2</div>
+
             <h3>Middle-click</h3>
+
             <p>
               Select text and middle-click to open Research Wheel
               directly where you're working.
             </p>
+
           </div>
 
           <div class="step">
+
             <div class="step-number">3</div>
+
             <h3>Research, save, or cite</h3>
+
             <p>
               Search, translate, copy, generate a citation, or save
               your research to your workspace.
             </p>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
 
 
     <!-- FEATURES -->
+
     <section>
+
       <div class="container">
 
         <div class="section-heading">
+
           <h2>Everything you need to research</h2>
-          <p>Useful research tools without the tab chaos.</p>
+
+          <p>
+            Useful research tools without the tab chaos.
+          </p>
+
         </div>
 
         <div class="features">
 
           <article class="feature">
+
             <h3>Your research tools, one middle-click away</h3>
+
             <p>
               Select text, open Research Wheel, then search, save,
               translate, copy, or cite it without leaving the page.
             </p>
+
           </article>
 
           <article class="feature">
+
             <h3>Keep your research in one place</h3>
+
             <p>
               Save quotes, code, and sources as you browse so you
               don't lose important information across dozens of tabs.
             </p>
+
           </article>
 
           <article class="feature">
+
             <h3>Citations in seconds</h3>
+
             <p>
               Generate APA, MLA, Chicago, or BibTeX citations
               without formatting them yourself.
             </p>
+
           </article>
 
           <article class="feature">
+
             <h3>Search research sources faster</h3>
+
             <p>
               Send selected text to research tools such as Google Scholar
               and PubMed without manually opening another tab.
             </p>
+
           </article>
 
           <article class="feature">
+
             <h3>Private by design</h3>
+
             <p>
               Research Wheel runs locally on your computer.
               No tracking and no external servers.
             </p>
+
           </article>
 
         </div>
+
       </div>
+
     </section>
 
 
     <!-- PRIVACY / OPEN SOURCE -->
+
     <section>
+
       <div class="container">
 
         <div class="privacy">
@@ -502,15 +622,85 @@
         </div>
 
       </div>
+
+    </section>
+
+
+    <!-- BLOG -->
+
+    <section id="blog">
+
+      <div class="container">
+
+        <div class="section-heading">
+
+          <h2>Research Wheel Blog</h2>
+
+          <p>
+            Development updates, ideas, and stories behind the project.
+          </p>
+
+        </div>
+
+        <div class="blog-posts">
+
+          <a
+            href="Blog/What_Is_ResearchWheel/"
+            class="blog-post"
+          >
+
+            <h3>What Is Research Wheel?</h3>
+
+            <p>
+              Learn what Research Wheel is, why it was created,
+              and how it helps make web research less fragmented.
+            </p>
+
+            <span class="read-more">
+              Read the post →
+            </span>
+
+          </a>
+
+
+          <a
+            href="Blog/Product_Hunt_Launch/"
+            class="blog-post"
+          >
+
+            <h3>Research Wheel Launches on Product Hunt</h3>
+
+            <p>
+              Research Wheel is now on Product Hunt. Read about
+              the launch, what I'm hoping to learn, and where to
+              follow the project.
+            </p>
+
+            <span class="read-more">
+              Read the post →
+            </span>
+
+          </a>
+
+        </div>
+
+      </div>
+
     </section>
 
 
     <!-- FINAL CTA -->
+
     <section class="final-cta">
+
       <div class="container">
 
         <div class="section-heading">
-          <h2>Ready to research without the tab chaos?</h2>
+
+          <h2>
+            Ready to research without the tab chaos?
+          </h2>
+
         </div>
 
         <p>
@@ -528,14 +718,18 @@
         </a>
 
       </div>
+
     </section>
 
   </main>
 
 
   <!-- FOOTER -->
+
   <footer>
+
     <div class="container">
+
       <p>
         Research Wheel ·
         <a
@@ -546,7 +740,9 @@
           Open source on GitHub
         </a>
       </p>
+
     </div>
+
   </footer>
 
 </body>
