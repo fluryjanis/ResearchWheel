@@ -10,7 +10,7 @@ Research Wheel puts research tools directly alongside the information you're rea
 
 The recommended installation method is Firefox Add-ons.
 
-**[Install Research Wheel for Firefox](https://addons.mozilla.org/en-US/firefox/addon/research-wheel/)**
+**[Install Research Wheel for Firefox](https://addons.mozilla.org/en-US/firefox/addon/researchwheel/)**
 
 ### 🌐 Chrome / Chromium
 
