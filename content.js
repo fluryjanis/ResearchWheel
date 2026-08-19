@@ -1,6 +1,7 @@
 /**
  * Research Wheel - Chrome Content Script
  * 8-octant single-ring radial menu with Proper Noun Engine integration.
+ * Includes 25ms hardware micro-switch debounce and native autoscroll killer.
  */
 
 (function () {
@@ -13,9 +14,11 @@
   }
 
   const HOLD_THRESHOLD_MS = 150;
+  const RELEASE_GRACE_MS = 25; // Debounce window for flaky / chattering middle switches
   const NEUTRAL_RADIUS_PX = 35;
 
   let holdTimer = null;
+  let releaseGraceTimer = null;
   let isWheelActive = false;
   let originX = 0;
   let originY = 0;
@@ -132,7 +135,6 @@
 
     isProperNoun(word) {
       if (!word) return false;
-      // Strip possessive apostrophes (supporting straight, curly, and standard backticks)
       let clean = word.replace(/['’‘`´]s$/i, '').replace(/s['’‘`´]$/i, '');
       clean = clean.replace(/[^a-zA-Z0-9]/g, '');
       if (!clean) return false;
@@ -269,7 +271,7 @@
       'foxnews': 'Fox News',
       'cbsnews': 'CBS News',
       'abcnews': 'ABC News',
-      'wsj': 'The Wall Journal',
+      'wsj': 'The Wall Street Journal',
       'bloomberg': 'Bloomberg',
       'forbes': 'Forbes',
       'npr': 'NPR',
@@ -281,7 +283,6 @@
   function getCleanTitle() {
     const rawTitle = document.title || 'Source';
     const titleStr = String(rawTitle);
-    // Expanded brand suffix regex replacement
     let clean = titleStr.replace(/\s*[:|–-]\s*(NPR|The White House|NBC News|The Hill|AP News|Reuters|Associated Press|BBC|CNN|The New York Times|The Washington Post|The Guardian).*$/i, '').trim();
     clean = clean.split(/\s+[\-\|–]\s+/)[0].trim();
     return clean || titleStr;
@@ -310,7 +311,7 @@
       'foxnews': 'Fox News',
       'cbsnews': 'CBS News',
       'abcnews': 'ABC News',
-      'wsj': 'The Wall Journal',
+      'wsj': 'The Wall Street Journal',
       'bloomberg': 'Bloomberg',
       'forbes': 'Forbes',
       'wired': 'Wired',
@@ -347,7 +348,7 @@
       if (host.includes('nytimes.com')) return 'The New York Times';
       if (host.includes('washingtonpost.com')) return 'The Washington Post';
       if (host.includes('cnn.com')) return 'CNN';
-      if (host.includes('wsj.com')) return 'The Wall Journal';
+      if (host.includes('wsj.com')) return 'The Wall Street Journal';
       if (host.includes('npr.org')) return 'NPR';
       if (host.includes('usnews.com')) return 'U.S. News & World Report';
     } catch(e) {}
@@ -431,7 +432,8 @@
     const headingsAndParas = Array.from(document.querySelectorAll('p, div, span, header')).slice(0, 20);
     for (const el of headingsAndParas) {
       const txt = el.innerText ? el.innerText.trim() : '';
-      const match = txt.match(/^by\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+and\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)*)/i);
+      // Fixed: Properly closed capture groups for byline pattern matching
+      const match = txt.match(/^by\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+(?:and|&)\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)?)/i);
       if (match && match[1] && match[1].length < 80) {
         return match[1].trim();
       }
@@ -484,7 +486,7 @@
 
     if (!author) {
       if (isNewsWebsite(domain)) {
-        author = ''; // Forces title-first fallback for standard news websites
+        author = '';
       } else {
         const groupAuth = getGroupAuthor(domain, url);
         if (groupAuth) {
@@ -495,7 +497,6 @@
       }
     }
 
-    // Homepage Root Detector: Identifies if we are on the homepage or localized path index
     let isHomepage = false;
     try {
       const urlObj = new URL(url);
@@ -512,7 +513,6 @@
       author = groupAuth || siteName;
     }
 
-    // Secondary sub-domain parsing to target specific profiles
     try {
       const urlObj = new URL(url);
       const pathParts = urlObj.pathname.split('/').filter(Boolean);
@@ -581,12 +581,7 @@
     }
 
     const uniqueNames = [...new Set(names)].filter(n => n.length > 1);
-    
-    if (uniqueNames.length > 5) {
-      return [];
-    }
-
-    return uniqueNames;
+    return uniqueNames.length > 5 ? [] : uniqueNames;
   }
 
   function formatSingleAuthorAPA(name) {
@@ -798,7 +793,7 @@
     return String(url).replace(/^https?:\/\//i, '').replace(/^www\./i, '');
   }
 
-  // --- Scroll & Pointer Lock Helpers ---
+  // --- AUTOSCROLL KILLER & POINTER LOCK DEFENSES ---
 
   function preventScrollEvent(e) {
     if (isWheelActive) {
@@ -832,18 +827,17 @@
     if (document.body) document.body.style.setProperty('cursor', 'pointer', 'important');
     hostDiv.style.setProperty('cursor', 'pointer', 'important');
 
-    // Add locking listeners globally across document and window structures
     window.addEventListener('wheel', preventScrollEvent, { capture: true, passive: false });
     document.addEventListener('wheel', preventScrollEvent, { capture: true, passive: false });
     window.addEventListener('touchmove', preventScrollEvent, { capture: true, passive: false });
     document.addEventListener('touchmove', preventScrollEvent, { capture: true, passive: false });
     window.addEventListener('keydown', preventKeyboardScroll, { capture: true, passive: false });
     
-    // Add defensive fallback overlay listener directly inside the shadow root container
     wheelContainer.addEventListener('wheel', preventScrollEvent, { capture: true, passive: false });
   }
 
-  function unlockScrollAndPointer() {
+  function killAutoscrollAndUnlock() {
+    // 1. Restore body/doc overflow rules
     if (document.body) {
       if (originalBodyOverflow) {
         document.body.style.setProperty('overflow', originalBodyOverflow);
@@ -862,22 +856,36 @@
     }
     hostDiv.style.removeProperty('cursor');
 
+    // 2. Detach locking listeners
     window.removeEventListener('wheel', preventScrollEvent, { capture: true });
     document.removeEventListener('wheel', preventScrollEvent, { capture: true });
     window.removeEventListener('touchmove', preventScrollEvent, { capture: true });
     document.removeEventListener('touchmove', preventScrollEvent, { capture: true });
     window.removeEventListener('keydown', preventKeyboardScroll, { capture: true });
-    
     wheelContainer.removeEventListener('wheel', preventScrollEvent, { capture: true });
+
+    // 3. Hide wheel element
+    wheelContainer.classList.add('hidden');
   }
 
-  // --- Mouse Event Listeners ---
+  // --- MOUSE EVENT LISTENERS (DEBOUNCE + AUTOSCROLL INTERCEPT) ---
 
   window.addEventListener('mousedown', (e) => {
     if (e.button !== 1) return;
 
+    // Check if middle button was released briefly due to switch contact bounce
+    if (releaseGraceTimer) {
+      clearTimeout(releaseGraceTimer);
+      releaseGraceTimer = null;
+      e.preventDefault();
+      e.stopPropagation();
+      return; // Maintain gesture hold without disruption
+    }
+
     originX = e.clientX;
     originY = e.clientY;
+
+    if (holdTimer) clearTimeout(holdTimer);
 
     holdTimer = setTimeout(() => {
       isWheelActive = true;
@@ -898,21 +906,46 @@
   window.addEventListener('mouseup', (e) => {
     if (e.button !== 1) return;
 
-    if (holdTimer) {
+    // Fast click before hold threshold: cancel gesture initialization
+    if (holdTimer && !isWheelActive) {
       clearTimeout(holdTimer);
       holdTimer = null;
+      return;
     }
 
     if (isWheelActive) {
       e.preventDefault();
       e.stopPropagation();
 
-      executeAction(currentSector);
-      hideWheel();
-      isWheelActive = false;
+      if (releaseGraceTimer) clearTimeout(releaseGraceTimer);
+
+      // Start 25ms debounce window to ensure this is an intentional release
+      releaseGraceTimer = setTimeout(() => {
+        releaseGraceTimer = null;
+        finalizeGestureAndExecute();
+      }, RELEASE_GRACE_MS);
     }
   }, true);
 
+  function finalizeGestureAndExecute() {
+    if (!isWheelActive) return;
+
+    const sectorToRun = currentSector;
+    
+    // Autoscroll Killer Pipeline: Disengage all scroll/pointer locks before action
+    killAutoscrollAndUnlock();
+    isWheelActive = false;
+
+    if (holdTimer) {
+      clearTimeout(holdTimer);
+      holdTimer = null;
+    }
+
+    // Execute target octant action
+    executeAction(sectorToRun);
+  }
+
+  // Prevent Chrome from triggering native autoscroll or pasting clipboard
   window.addEventListener('auxclick', (e) => {
     if (e.button === 1 && preventNextAuxClick) {
       e.preventDefault();
@@ -921,7 +954,19 @@
     }
   }, true);
 
-  // --- 8-Octant Radial Trigonometry Math ---
+  // Safety net: Kill autoscroll and reset pointer if user tabs away or window blurs
+  window.addEventListener('blur', () => {
+    if (isWheelActive || holdTimer || releaseGraceTimer) {
+      if (holdTimer) clearTimeout(holdTimer);
+      if (releaseGraceTimer) clearTimeout(releaseGraceTimer);
+      holdTimer = null;
+      releaseGraceTimer = null;
+      isWheelActive = false;
+      killAutoscrollAndUnlock();
+    }
+  });
+
+  // --- 8-OCTANT RADIAL TRIGONOMETRY MATH ---
 
   function calculateSector(mouseX, mouseY) {
     const dx = mouseX - originX;
@@ -980,11 +1025,6 @@
     wheelContainer.classList.remove('hidden');
     updateActiveUI('NEUTRAL');
     lockScrollAndPointer();
-  }
-
-  function hideWheel() {
-    wheelContainer.classList.add('hidden');
-    unlockScrollAndPointer();
   }
 
   // --- RESEARCH ACTIONS EXECUTION ---

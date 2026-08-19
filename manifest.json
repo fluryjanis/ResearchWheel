@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Research Wheel",
-  "version": "2.0.0",
-  "description": "Single-ring 8-action research gesture wheel and workspace panel for instant citations, notes, and searches.",
+  "version": "2.0.1",
+  "description": "Middle Mouse Button - Single-ring 8-action research gesture wheel and workspace panel for instant citations, notes, and searches.",
   "permissions": [
     "storage",
     "activeTab",
